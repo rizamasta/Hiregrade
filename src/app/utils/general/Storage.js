@@ -1,19 +1,27 @@
-import { AsyncStorage } from 'AsyncStorage';
-
 /**
  * Loads something from storage and runs it thru JSON.parse.
  *
  * @param key The key to fetch.
  */
-export async function getItem(key) {
-    try {
-        const item = await AsyncStorage.getItem(key)
-        return JSON.parse(item)
-    } catch {
-        return null
+export function getItem(key) {
+  try {
+    var name = key + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(";");
+    for (var i = 0; i < ca.length; i++) {
+      var c = ca[i];
+      while (c.charAt(0) === " ") {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) === 0) {
+        return c.substring(name.length, c.length);
+      }
     }
+    return null;
+  } catch {
+    return null;
+  }
 }
-
 
 /**
  * Saves an object to storage.
@@ -21,41 +29,61 @@ export async function getItem(key) {
  * @param key The key to fetch.
  * @param value The value to store.
  */
-export async function setItem(key, value) {
-    try {
-        await AsyncStorage.setItem(key, JSON.stringify(value))
-        return true
-    } catch {
-        return false
+export function setItem(key, value, remove) {
+  try {
+    var d = new Date();
+    d.setDate(d.getDate() + 1);
+    d.setHours(3);
+    d.setMinutes(0);
+    d.setSeconds(0);
+    var expires = "expires=" + d.toGMTString();
+    if (remove) {
+      console.log(key);
+      document.cookie =
+        key + "=" + value + ";expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    } else {
+      document.cookie = key + "=" + value + ";" + expires + ";path=/";
     }
+    return true;
+  } catch {
+    return false;
+  }
 }
-
 
 /**
-* Removes something from storage.
-*
-* @param key The key to kill.
-*/
-export async function removeItem(key) {
-    try {
-        await AsyncStorage.setItem(key, null);
-        return true
-    } catch (er) {
-        console.error(er);
-
-        return false;
-    }
+ * Removes something from storage.
+ *
+ * @param key The key to kill.
+ */
+export function removeItem(key) {
+  try {
+    setItem(key, "", true);
+    return true;
+  } catch (er) {
+    console.error(er);
+    return false;
+  }
 }
-
 
 /**
  * Burn it all to the ground.
  */
-export async function clearAll() {
-    try {
-        await AsyncStorage.clear()
-        return true;
-    } catch {
-        return false;
+export function clearAll() {
+  try {
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(";");
+    for (var i = 0; i < ca.length; i++) {
+      var c = ca[i];
+      while (c.charAt(0) === " ") {
+        c = c.substring(1);
+      }
+      if (c) {
+        var name = ca[i].split("=")[0].trim();
+        setItem(name, "", true);
+      }
     }
+    return true;
+  } catch {
+    return false;
+  }
 }
