@@ -13,7 +13,7 @@ import {
 } from "@material-ui/core";
 import { More as MoreIcon } from "@material-ui/icons";
 import { grey } from "@material-ui/core/colors";
-import { PRIMARY } from "../../../assets/css/main";
+import { PRIMARY_BUTTON, PRIMARY_BOLD } from "assets/css/main";
 import { loadImage } from "app/utils";
 
 const useStyles = makeStyles(theme => ({
@@ -128,15 +128,9 @@ export default function PrimaryAppBar() {
                 </IconButton>
                 <p>Messages</p> */}
       </MenuItem>
-      <MenuItem>
+      {/* <MenuItem>
         <Link to="/users/register">Daftar</Link>
-        {/* <IconButton aria-label="show 11 new notifications" color="inherit">
-                    <Badge badgeContent={11} color="secondary">
-                        <NotificationsIcon />
-                    </Badge>
-                </IconButton>
-                <p>Notifications</p> */}
-      </MenuItem>
+      </MenuItem> */}
     </Menu>
   );
 
@@ -171,9 +165,45 @@ export default function PrimaryAppBar() {
             <Grid item lg={10}>
               <Grid container justify="flex-end" alignItems="center">
                 <div className={classes.grow} />
-                <div className={classes.sectionDesktop}>
+                <div
+                  className={classes.sectionDesktop}
+                  style={{ alignItems: "center" }}>
+                  <Link
+                    to="/users/register"
+                    style={{
+                      ...PRIMARY_BOLD,
+                      marginLeft: 20,
+                      marginRight: 20
+                    }}>
+                    Home
+                  </Link>
+                  <Link
+                    to="/users/register"
+                    style={{
+                      ...PRIMARY_BOLD,
+                      marginLeft: 20,
+                      marginRight: 20
+                    }}>
+                    About Us
+                  </Link>
+                  <Link
+                    to="/users/register"
+                    style={{
+                      ...PRIMARY_BOLD,
+                      marginLeft: 20,
+                      marginRight: 20
+                    }}>
+                    Contact
+                  </Link>
                   <Link to="/users/register">
-                    <Button variant="contained" style={{ ...PRIMARY }}>
+                    <Button
+                      size="small"
+                      variant="contained"
+                      style={{
+                        ...PRIMARY_BUTTON,
+                        marginLeft: 20,
+                        marginRight: 80
+                      }}>
                       Daftar
                     </Button>
                   </Link>

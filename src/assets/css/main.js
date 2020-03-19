@@ -1,5 +1,16 @@
 import grey from "@material-ui/core/colors/grey";
-
+export const palette = {
+  primary: "#3B69AD"
+};
+export const PRIMARY_BOLD = {
+  color: palette.primary,
+  fontWeight: "bold"
+};
+export const PRIMARY_BUTTON = {
+  color: "white",
+  backgroundColor: palette.primary,
+  textTransform: "capitalize"
+};
 export const BUTTON_OVAL = {
   borderRadius: 20,
   width: 90,
@@ -8,10 +19,7 @@ export const BUTTON_OVAL = {
   borderColor: grey[500],
   textTransform: "capitalize"
 };
-export const PRIMARY = {
-  color: "white",
-  backgroundColor: "#3B69AD"
-};
+
 export const DARK = {
   color: "white",
   backgroundColor: grey[800],
