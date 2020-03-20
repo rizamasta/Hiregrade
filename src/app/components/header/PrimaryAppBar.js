@@ -2,19 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import { makeStyles } from "@material-ui/core/styles";
-import {
-  AppBar,
-  Toolbar,
-  Grid,
-  IconButton,
-  MenuItem,
-  Button,
-  Menu
-} from "@material-ui/core";
-import { More as MoreIcon } from "@material-ui/icons";
+import { AppBar, Toolbar, Grid, Button } from "@material-ui/core";
 import { grey } from "@material-ui/core/colors";
 import { PRIMARY_BUTTON, PRIMARY_BOLD } from "assets/css/main";
 import { loadImage } from "app/utils";
+import i18next from "i18next";
 
 const useStyles = makeStyles(theme => ({
   grow: {
@@ -69,162 +61,90 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function PrimaryAppBar() {
-  const classes = useStyles();
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
-
-  const isMenuOpen = Boolean(anchorEl);
-  const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
-
-  // const handleProfileMenuOpen = event => {
-  //     setAnchorEl(event.currentTarget);
-  // };
-
-  const handleMobileMenuClose = () => {
-    setMobileMoreAnchorEl(null);
-  };
-
-  const handleMenuClose = () => {
-    setAnchorEl(null);
-    handleMobileMenuClose();
-  };
-
-  const handleMobileMenuOpen = event => {
-    setMobileMoreAnchorEl(event.currentTarget);
-  };
-
-  const menuId = "primary-search-account-menu";
-  const renderMenu = (
-    <Menu
-      anchorEl={anchorEl}
-      anchorOrigin={{ vertical: "top", horizontal: "right" }}
-      id={menuId}
-      keepMounted
-      transformOrigin={{ vertical: "top", horizontal: "right" }}
-      open={isMenuOpen}
-      onClose={handleMenuClose}>
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
-    </Menu>
-  );
-
-  const mobileMenuId = "primary-search-account-menu-mobile";
-  const renderMobileMenu = (
-    <Menu
-      anchorEl={mobileMoreAnchorEl}
-      anchorOrigin={{ vertical: "top", horizontal: "right" }}
-      id={mobileMenuId}
-      keepMounted
-      transformOrigin={{ vertical: "top", horizontal: "right" }}
-      open={isMobileMenuOpen}
-      onClose={handleMobileMenuClose}>
-      <MenuItem>
-        Masuk
-        {/* <IconButton aria-label="show 4 new mails" color="inherit">
-                    <Badge badgeContent={4} color="secondary">
-                        <MailIcon />
-                    </Badge>
-                </IconButton>
-                <p>Messages</p> */}
-      </MenuItem>
-      {/* <MenuItem>
-        <Link to="/users/register">Daftar</Link>
-      </MenuItem> */}
-    </Menu>
-  );
-
-  return (
-    <div>
-      <AppBar
-        position="absolute"
-        color="default"
-        style={{
-          backgroundColor: "white",
-          top: 0,
-          bottom: "auto",
-          position: "fixed"
-        }}>
-        <Toolbar>
-          <Grid
-            container
-            direction="row"
-            justify="center"
-            alignItems="center"
-            spacing={2}>
-            <Grid item lg={2} className={classes.title}>
-              <Link to="/" className="centered">
-                <img
-                  alt="Hiregrade-Logo"
-                  src={loadImage("HiregradeLogo.png")}
-                  //   style={{ marginRight: 50 }}
-                  width={150}
-                />
-              </Link>
-            </Grid>
-            <Grid item lg={10}>
-              <Grid container justify="flex-end" alignItems="center">
-                <div className={classes.grow} />
-                <div
-                  className={classes.sectionDesktop}
-                  style={{ alignItems: "center" }}>
-                  <Link
-                    to="/users/register"
-                    style={{
-                      ...PRIMARY_BOLD,
-                      marginLeft: 20,
-                      marginRight: 20
-                    }}>
-                    Home
-                  </Link>
-                  <Link
-                    to="/users/register"
-                    style={{
-                      ...PRIMARY_BOLD,
-                      marginLeft: 20,
-                      marginRight: 20
-                    }}>
-                    About Us
-                  </Link>
-                  <Link
-                    to="/users/register"
-                    style={{
-                      ...PRIMARY_BOLD,
-                      marginLeft: 20,
-                      marginRight: 20
-                    }}>
-                    Contact
-                  </Link>
-                  <Link to="/users/register">
-                    <Button
-                      size="small"
-                      variant="contained"
+export default class PrimaryAppBar extends React.Component {
+  classes = {};
+  render() {
+    return (
+      <div>
+        <AppBar
+          position="absolute"
+          color="default"
+          style={{
+            backgroundColor: "white",
+            top: 0,
+            bottom: "auto",
+            position: "fixed",
+            boxShadow: "none"
+          }}>
+          <Toolbar>
+            <Grid
+              container
+              direction="row"
+              justify="center"
+              alignItems="center"
+              spacing={2}>
+              <Grid item lg={2} className={this.classes.title}>
+                <Link to="/" className="centered">
+                  <img
+                    alt="Hiregrade-Logo"
+                    src={loadImage("HiregradeLogo.png")}
+                    //   style={{ marginRight: 50 }}
+                    width={150}
+                  />
+                </Link>
+              </Grid>
+              <Grid item lg={10}>
+                <Grid container justify="flex-end" alignItems="center">
+                  <div className={this.classes.grow} />
+                  <div
+                    className={this.classes.sectionDesktop}
+                    style={{ alignItems: "center" }}>
+                    <Link
+                      to=""
                       style={{
-                        ...PRIMARY_BUTTON,
+                        ...PRIMARY_BOLD,
                         marginLeft: 20,
-                        marginRight: 80
+                        marginRight: 20
                       }}>
-                      Daftar
-                    </Button>
-                  </Link>
-                </div>
-                <div className={classes.sectionMobile}>
-                  <IconButton
-                    aria-label="show more"
-                    aria-controls={mobileMenuId}
-                    aria-haspopup="true"
-                    onClick={handleMobileMenuOpen}
-                    color="inherit">
-                    <MoreIcon />
-                  </IconButton>
-                </div>
+                      {i18next.t("general:link.home", "Home")}
+                    </Link>
+                    <Link
+                      to="/users/register"
+                      style={{
+                        ...PRIMARY_BOLD,
+                        marginLeft: 20,
+                        marginRight: 20
+                      }}>
+                      About Us
+                    </Link>
+                    <Link
+                      to=""
+                      style={{
+                        ...PRIMARY_BOLD,
+                        marginLeft: 20,
+                        marginRight: 20
+                      }}>
+                      Contact
+                    </Link>
+                    <Link to="">
+                      <Button
+                        size="small"
+                        variant="contained"
+                        style={{
+                          ...PRIMARY_BUTTON,
+                          marginLeft: 20,
+                          marginRight: 80
+                        }}>
+                        Daftar
+                      </Button>
+                    </Link>
+                  </div>
+                </Grid>
               </Grid>
             </Grid>
-          </Grid>
-        </Toolbar>
-      </AppBar>
-      {renderMobileMenu}
-      {renderMenu}
-    </div>
-  );
+          </Toolbar>
+        </AppBar>
+      </div>
+    );
+  }
 }

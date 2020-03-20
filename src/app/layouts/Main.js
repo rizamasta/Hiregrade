@@ -18,7 +18,7 @@ class Main extends React.Component {
             <Header />
           </Grid>
           <Grid item lg={12}>
-            <main style={{ minHeight: "40vh", marginTop: 60, padding: 20 }}>
+            <main style={{ minHeight: "40vh", padding: 20, paddingTop: 80 }}>
               <Switch>
                 {routes.map((route, i) => (
                   <RouteWithSubRoutes key={i} {...route} />
@@ -28,7 +28,7 @@ class Main extends React.Component {
           </Grid>
           <Grid item lg={12}>
             <div style={{ position: "relative", bottom: 0 }}>
-              {/* <Footer /> */}
+              <Footer />
             </div>
           </Grid>
         </Grid>

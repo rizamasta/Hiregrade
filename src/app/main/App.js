@@ -30,7 +30,6 @@ function App() {
             );
           })}
           {routes.map((value, i) => {
-            console.log(value);
             return <Route key={i} exec path={value.path} component={Main} />;
           })}
           <Route component={NotFound} />
