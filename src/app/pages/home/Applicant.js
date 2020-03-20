@@ -12,7 +12,7 @@ export default class Applicant extends React.Component {
         style={{
           backgroundColor: palette.primary
         }}>
-        <div style={{ position: "relative", paddingTop: 120, left: "20%" }}>
+        <div style={{ position: "relative", paddingTop: 120, left: "10%" }}>
           <Typography style={{ marginBottom: 20, color: "white" }}>
             FOR APPLICANTS
           </Typography>

@@ -1,6 +1,7 @@
 import grey from "@material-ui/core/colors/grey";
 export const palette = {
-  primary: "#3B69AD"
+  primary: "#3B69AD",
+  secondary: "#52c8f4"
 };
 export const PRIMARY_BOLD = {
   color: palette.primary,
