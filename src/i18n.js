@@ -28,7 +28,9 @@ i18n
     defaultNS: "general",
     interpolation: {
       escapeValue: false // not needed for react as it escapes by default
+    },
+    react: {
+      wait: true
     }
   });
-
 export default i18n;

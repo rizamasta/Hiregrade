@@ -9,7 +9,6 @@ import { NotFound } from "app/pages";
 import { isMobile } from "react-device-detect";
 import { Grid, Typography, Hidden } from "@material-ui/core";
 import { loadImage } from "app/utils";
-// import {transl} from 'react-i18next';
 
 const options = {
   position: "top center",

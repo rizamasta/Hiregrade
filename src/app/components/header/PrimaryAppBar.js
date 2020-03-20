@@ -51,10 +51,10 @@ export default class PrimaryAppBar extends React.Component {
                         marginLeft: 20,
                         marginRight: 20
                       }}>
-                      {i18next.t("general:link.home", "Home")}
+                      {i18next.t("general:link.home")}
                     </Link>
                     <Link
-                      to="/users/register"
+                      to=""
                       style={{
                         ...PRIMARY_BOLD,
                         marginLeft: 20,
