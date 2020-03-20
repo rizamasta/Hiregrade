@@ -1,65 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import { makeStyles } from "@material-ui/core/styles";
 import { AppBar, Toolbar, Grid, Button } from "@material-ui/core";
-import { grey } from "@material-ui/core/colors";
 import { PRIMARY_BUTTON, PRIMARY_BOLD } from "assets/css/main";
 import { loadImage } from "app/utils";
 import i18next from "i18next";
-
-const useStyles = makeStyles(theme => ({
-  grow: {
-    flexGrow: 1
-  },
-  menuButton: {
-    marginRight: theme.spacing(2)
-  },
-  title: {
-    display: "none",
-    fontSize: 12,
-    [theme.breakpoints.up("lg")]: {
-      display: "block"
-    }
-  },
-  search: {
-    position: "relative",
-    borderRadius: theme.shape.borderRadius,
-    backgroundColor: grey[100],
-    "&:hover": {
-      backgroundColor: grey[200]
-    },
-    border: "0.5px solid",
-    borderColor: grey[200],
-    [theme.breakpoints.up("md")]: {
-      marginLeft: theme.spacing(3),
-      width: "auto"
-    }
-  },
-  inputRoot: {
-    color: "inherit"
-  },
-  inputInput: {
-    padding: theme.spacing(1, 4, 1, 4),
-    transition: theme.transitions.create("width"),
-    width: "100%",
-    [theme.breakpoints.up("md")]: {
-      width: 300
-    }
-  },
-  sectionDesktop: {
-    display: "none",
-    [theme.breakpoints.up("md")]: {
-      display: "flex"
-    }
-  },
-  sectionMobile: {
-    display: "flex",
-    [theme.breakpoints.up("md")]: {
-      display: "none"
-    }
-  }
-}));
 
 export default class PrimaryAppBar extends React.Component {
   classes = {};
