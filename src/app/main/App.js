@@ -9,6 +9,7 @@ import { NotFound } from "app/pages";
 import { isMobile } from "react-device-detect";
 import { Grid, Typography, Hidden } from "@material-ui/core";
 import { loadImage } from "app/utils";
+import { withTranslation } from "react-i18next";
 
 const options = {
   position: "top center",
@@ -49,6 +50,7 @@ const Mobile = (
     <Typography>Mobile version comming soon..</Typography>
   </Grid>
 );
+
 class App extends React.Component {
   render() {
     if (isMobile) {
@@ -64,4 +66,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default withTranslation()(App);

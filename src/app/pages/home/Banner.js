@@ -17,8 +17,7 @@ export default class Banner extends React.Component {
             resize: ""
           }}
         />
-        <div
-          style={{ position: "absolute", top: 120, left: "10%", width: 500 }}>
+        <div style={{ position: "absolute", top: 180, left: "5%", width: 500 }}>
           <Typography
             variant="h3"
             style={{
